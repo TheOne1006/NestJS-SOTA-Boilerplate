@@ -7,13 +7,8 @@
  */
 
 import { Module } from '@nestjs/common';
-import {
-  APP_INTERCEPTOR,
-  APP_FILTER,
- } from '@nestjs/core';
-import {
-  LoggingInterceptor,
-} from './interceptors';
+import { APP_INTERCEPTOR, APP_FILTER } from '@nestjs/core';
+import { LoggingInterceptor } from './interceptors';
 import {
   AnyExceptionsFilter,
   BadRequestFilter,
@@ -24,11 +19,7 @@ import { AppI18nModule } from './i18n';
 import { DatabaseModule } from './database';
 
 @Module({
-  imports: [
-    LoggerModule,
-    AppI18nModule,
-    DatabaseModule,
-  ],
+  imports: [LoggerModule, AppI18nModule, DatabaseModule],
   providers: [
     { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
     {

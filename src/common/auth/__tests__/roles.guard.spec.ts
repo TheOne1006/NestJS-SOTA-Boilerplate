@@ -148,7 +148,7 @@ describe('guard RolesGuard', () => {
         err = error;
       }
 
-      expect(err.response.key).toEqual('ERROR.FORBIDDEN');
+      expect(err.response.key).toEqual('error.FORBIDDEN');
     });
 
     it('should return false if empty roles', () => {
@@ -167,7 +167,7 @@ describe('guard RolesGuard', () => {
         err = error;
       }
 
-      expect(err.response.key).toEqual('ERROR.FORBIDDEN');
+      expect(err.response.key).toEqual('error.FORBIDDEN');
     });
 
     it('should return false if unmatch roles', () => {
@@ -186,7 +186,7 @@ describe('guard RolesGuard', () => {
         err = error;
       }
 
-      expect(err.response.key).toEqual('ERROR.FORBIDDEN');
+      expect(err.response.key).toEqual('error.FORBIDDEN');
     });
 
     it('should return true if match roles', () => {

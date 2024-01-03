@@ -1,10 +1,19 @@
 import { NestFactory } from '@nestjs/core';
+// import { I18nValidationExceptionFilter, I18nValidationPipe } from 'nestjs-i18n';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  // app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
+
+  // app.useGlobalPipes(new I18nValidationPipe());
+
+  // app.useGlobalFilters(
+  //   new I18nValidationExceptionFilter({
+  //     detailedErrors: false,
+  //   }),
+  // );
+
   const options = new DocumentBuilder()
     .setTitle('example')
     .setDescription('example API description')

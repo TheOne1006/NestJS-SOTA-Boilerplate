@@ -12,7 +12,8 @@
       },
       {
         "include": "i18n/**/*", 
-        "watchAssets": true
+        "watchAssets": true,
+        "outDir": "dist/src"
       }
     ]
   }

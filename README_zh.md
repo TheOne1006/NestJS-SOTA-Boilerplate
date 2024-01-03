@@ -9,14 +9,14 @@
 2. sequelize
 3. 构建文档
     - 通过 `yarn doc` 构建文档信息
-4. 测试
+4. 测试 jest
     - 单元测试
     - 端对端测试
 5. Linter
     - eslint + prettier = ❤️
-6. 环境配置
-    - 根据不同环境,加载不同的配置文件
+6. 环境配置 env.*
 7. 标准路由
+8. jwt 权鉴
 
 ## Getting started
 

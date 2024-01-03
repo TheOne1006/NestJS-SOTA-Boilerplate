@@ -17,6 +17,7 @@ const MAX_LIMIT = 200;
 
 /**
  * 慢日志 拦截器
+ * 记录响应时长超过 MAX_LIMIT ms 的请求，将会被记录
  */
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {

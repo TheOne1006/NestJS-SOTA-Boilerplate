@@ -37,9 +37,7 @@ if (!loggerConfig.filename) {
   loggerOptions = {
     transports: [
       new transports.Console({
-        format: format.combine(
-          ...formatArgs,
-        ),
+        format: format.combine(...formatArgs),
         ...loggerConfig,
       }),
     ],
@@ -48,16 +46,13 @@ if (!loggerConfig.filename) {
   loggerOptions = {
     transports: [
       new transports.File({
-        format: format.combine(
-          ...formatArgs,
-        ),
+        format: format.combine(...formatArgs),
         maxFiles: 5,
         maxsize: 5242880,
         ...loggerConfig,
       }),
     ],
   };
-
 }
 
 /**
