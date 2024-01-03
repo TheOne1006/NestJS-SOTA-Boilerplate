@@ -8,7 +8,7 @@ export const config = {
   sequelize: {
     username: 'root',
     password: null,
-    storage: join(__dirname, '../..','./databases/db/database.sqlite'),
+    storage: join(__dirname, '../..', './databases/db/database.sqlite'),
     host: 'localhost',
     dialect: 'sqlite' as Dialect,
     logging: false,

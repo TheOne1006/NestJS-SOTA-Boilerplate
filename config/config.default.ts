@@ -27,8 +27,13 @@ export interface Iconfig {
   swagger: {
     enable: boolean;
     endPoint: string;
-  }
-};
+  };
+  API_V1: string;
+  APP_CONFIG: {
+    JWT_SECRET: string;
+    JWT_SECRET_EXPIRESIN: string; // token 过期时间
+  };
+}
 
 /**
  * @ignore
@@ -38,7 +43,7 @@ export const config: Iconfig = {
   sequelize: {
     username: 'root',
     password: null,
-    storage: join(__dirname, '../..','./databases/db/database.dev.sqlite'),
+    storage: join(__dirname, '../..', './databases/db/database.dev.sqlite'),
     host: 'localhost',
     dialect: 'sqlite' as Dialect,
     logging: console.log,
@@ -53,5 +58,10 @@ export const config: Iconfig = {
   swagger: {
     enable: true,
     endPoint: 'api',
+  },
+  API_V1: 'v1',
+  APP_CONFIG: {
+    JWT_SECRET: '12132334234242',
+    JWT_SECRET_EXPIRESIN: '10d', // token 过期时间
   },
 };
