@@ -4,18 +4,19 @@
 
 ## Features
 
-1. Swagger Api Documentation
-    - Already integrated API documentation. To see all available endpoints visit http://localhost:3000/documentation
+1. Swagger 文档
+    - 提供 API 稳定.启动项目后访问 http://localhost:3000/api
 2. sequelize
-3. build doc
-4. test
-    - unit test
-    - e2e test
+3. 构建文档
+    - 通过 `yarn doc` 构建文档信息
+4. 测试
+    - 单元测试
+    - 端对端测试
 5. Linter
     - eslint + prettier = ❤️
-6. Environment Configuration
-    - development, test and production environment configurations
-7. Industry-standard routing
+6. 环境配置
+    - 根据不同环境,加载不同的配置文件
+7. 标准路由
 
 ## Getting started
 
@@ -56,4 +57,7 @@ yarn migrate:rest
 
 # 生成目录树
 $ yarn tree
+
+# 构建文档服务, 默认位于 `documentation`
+$ doc:serve
 ```
