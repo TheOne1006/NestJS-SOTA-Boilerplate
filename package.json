@@ -92,6 +92,7 @@
     "collectCoverageFrom": [
       "**/*.(t|j)s"
     ],
+    "globalSetup": "../test/init-test-db.ts",
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }

@@ -1,32 +1,40 @@
+import { SequelizeModule, getModelToken } from '@nestjs/sequelize';
 import { Test, TestingModule } from '@nestjs/testing';
-import { UserController } from '../user.controller';
+import { User } from '../user.entity';
 import { UserService } from '../user.service';
+import { CoreModule } from '../../core/core.module';
 
-describe('UserController', () => {
-  let controller: UserController;
+describe('UserService', () => {
+  let service: UserService;
+  let moduleRef: TestingModule;
 
-  beforeEach(async () => {
-    const UserServiceMock = {
-      create: jest.fn().mockImplementation(() => ({
-        id: 1000,
-        username: 'mock create',
-      })),
-    };
-
-    const module: TestingModule = await Test.createTestingModule({
-      providers: [
-        {
-          provide: UserService,
-          useValue: UserServiceMock,
-        },
-      ],
-      controllers: [UserController],
+  beforeAll(async () => {
+    moduleRef = await Test.createTestingModule({
+      imports: [CoreModule, SequelizeModule.forFeature([User])],
+      providers: [UserService],
     }).compile();
 
-    controller = module.get<UserController>(UserController);
+    service = moduleRef.get<UserService>(UserService);
   });
 
-  it('should be defined', () => {
-    expect(controller).toBeDefined();
+  afterAll(async () => {
+    await moduleRef.close();
+  });
+
+  describe('base test', () => {
+    it('should be defined', () => {
+      expect(service).toBeDefined();
+    });
+  });
+
+  describe('READ', () => {
+    describe('findAll()', () => {
+      it('should return user list', async () => {
+        console.log(service.findAll);
+        const users = await service.findAll();
+        console.log(users);
+        expect(users.length).toBeGreaterThan(0);
+      });
+    });
   });
 });

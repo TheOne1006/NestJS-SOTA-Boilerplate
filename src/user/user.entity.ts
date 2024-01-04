@@ -1,7 +1,7 @@
 import { Column, Model, Table, DataType } from 'sequelize-typescript';
 
 @Table({
-  tableName: `users`,
+  tableName: 'users',
   version: true,
 })
 export class User extends Model<User> {
@@ -32,9 +32,6 @@ export class User extends Model<User> {
 
   @Column({ type: DataType.DATE, field: 'updated_at' })
   updatedAt: Date;
-
-  @Column({ type: DataType.DATE, field: 'deleted_at' })
-  deletedAt: Date;
 
   @Column({ type: DataType.INTEGER, defaultValue: 0 })
   version: number;

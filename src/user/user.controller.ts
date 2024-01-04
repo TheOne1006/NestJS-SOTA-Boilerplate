@@ -28,13 +28,30 @@ const prefix = config.API_V1;
 
 @UseGuards(RolesGuard)
 @Roles(ROLE_AUTHENTICATED)
-@Controller(`${prefix}/user`)
+@Controller(`${prefix}/users`)
 @ApiSecurity('api_key')
 @ApiTags('user')
 @UseInterceptors(SerializerInterceptor)
-@Controller('users')
+@Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
+  /**
+   * 获取所有用户信息
+   *
+   */
+  @Get('/')
+  @ApiOperation({
+    summary: '用户信息',
+  })
+  @Roles(ROLE_SUPER_ADMIN)
+  @SerializerClass(UserDto)
+  @ApiResponse({ status: 403, description: 'Forbidden.' })
+  async list(): Promise<UserDto[]> {
+    const users = await this.userService.findAll();
+
+    return users;
+  }
+
   /**
    * 获取用户自身数据
    *
