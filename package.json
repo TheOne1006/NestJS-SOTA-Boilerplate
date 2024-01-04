@@ -27,7 +27,8 @@
     "doc": "npx compodoc -p tsconfig.compodoc.json --language zh-CN -n 'example documentation'",
     "doc:serve": "npm run doc && npx compodoc -s --port 9000",
     "doc:serve:watch": "npx compodoc -p tsconfig.compodoc.json --language zh-CN -w -n 'example documentation' -s --port 9000",
-    "tree": "treer -i \"/node_modules|dist|.git|coverage|documentation|.js|.sqlite|.e2e-spec.ts|.spec.ts|service.ts|.module.ts|.entity.ts|.dto.ts|.thrift|.decorator.ts|.constants.ts|.filter.ts|.interceptor.ts|.DS_Store|/documentation|.tmp|.test_tmp/\" -e tree.md"
+    "tree": "treer -i \"/node_modules|dist|.git|coverage|documentation|.js|.sqlite|.e2e-spec.ts|.spec.ts|service.ts|.module.ts|.entity.ts|.dto.ts|.thrift|.decorator.ts|.constants.ts|.filter.ts|.interceptor.ts|.DS_Store|/documentation|.tmp|.test_tmp/\" -e tree.md",
+    "commit": "cz"
   },
   "dependencies": {
     "@nestjs/common": "^10.0.0",
@@ -63,6 +64,7 @@
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
+    "cz-conventional-changelog": "^3.3.0",
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
@@ -97,10 +99,15 @@
       "**/*.(t|j)s"
     ],
     "coveragePathIgnorePatterns": [
-       ".*spec\\.ts$"
+      ".*spec\\.ts$"
     ],
     "globalSetup": "../test/init-test-db.ts",
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
