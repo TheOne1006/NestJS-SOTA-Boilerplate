@@ -1,12 +1,13 @@
-#  NestJS REST Boilerplate
+#  NestJS SOTA Boilerplate
 
-> 用于构建新项目, 使用[NestJS](https://nestjs.com) 框架. 欢迎提出您的宝贵意见. 
+> 用于构建新项目, 使用[NestJS V10](https://nestjs.com) 框架. 欢迎提出您的宝贵意见. 
 
-NestJS + TS + swagger + class-validator + class-transformer + jest + jwt + Authentication + i18n
+集成 NestJS + TS + swagger + class-validator + class-transformer + jest + JWT Auth + Authentication + i18n + compodoc 文档
 
 ## 核心思想
 
 1. 配置优于代码
+2. 少少代码即可完成任务
 
 ## Features
 
