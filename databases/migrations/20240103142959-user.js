@@ -5,7 +5,7 @@ const tableName = 'users';
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    const { STRING, BOOLEAN, INTEGER, DATE } = Sequelize;
+    const { STRING, BOOLEAN, INTEGER, DATE, JSON } = Sequelize;
 
     await queryInterface.createTable(
       tableName,
@@ -17,19 +17,30 @@ module.exports = {
           comment: 'id',
         },
         username: { type: STRING(50), allowNull: false, comment: '用户名' },
-        first_name: {
-          type: STRING(20),
+        email: {
+          type: STRING(30),
           allowNull: false,
-          comment: 'first  name',
+          comment: 'email',
         },
-        last_name: {
-          type: STRING(20),
+        roles: {
+          type: JSON,
+          defaultValue: [],
+          comment: '角色',
+        },
+        salt: {
+          type: STRING(30),
           allowNull: false,
-          comment: 'last name',
+          comment: 'salt',
+        },
+        password: {
+          type: STRING(100),
+          allowNull: false,
+          comment: 'password',
         },
         created_at: {
           type: DATE,
           allowNull: false,
+          defaultValue: Sequelize.literal('CURRENT_TIMESTAMP'),
           comment: '创建时间',
         },
         updated_at: {
@@ -58,6 +69,11 @@ module.exports = {
     await queryInterface.addIndex(tableName, ['username'], {
       unique: true,
       name: `idx_username`,
+    });
+
+    await queryInterface.addIndex(tableName, ['email'], {
+      unique: true,
+      name: `idx_email`,
     });
   },
 

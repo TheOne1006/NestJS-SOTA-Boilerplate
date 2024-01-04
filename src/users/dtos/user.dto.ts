@@ -4,7 +4,7 @@ import { Exclude } from 'class-transformer';
  * UserDto
  */
 export class UserDto {
-  id: string;
+  id: number;
 
   username: string;
 
