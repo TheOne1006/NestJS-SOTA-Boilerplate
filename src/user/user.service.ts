@@ -1,6 +1,6 @@
 // import * as _ from 'lodash';
 import { Transaction, SaveOptions } from 'sequelize';
-import crypto from 'crypto';
+import { createHash } from 'crypto';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
@@ -13,7 +13,7 @@ import { CreateUserDto, UserDto } from './dtos';
  * @param salt
  */
 function encryptPassword(password: string, salt: string) {
-  const hash = crypto.createHash('md5');
+  const hash = createHash('md5');
   hash.update(password + salt);
   return hash.digest('hex');
 }
@@ -82,9 +82,16 @@ export class UserService {
    * @param id number
    * @returns Promise<UserDto>
    */
-  async remove(id: number): Promise<UserDto> {
+  async removeByPk(id: number, transaction?: Transaction): Promise<UserDto> {
     const data = await this.userModel.findByPk(id);
-    await data.destroy();
+
+    const options: SaveOptions = {};
+    if (transaction) {
+      options.transaction = transaction;
+    }
+
+    await data.destroy(options);
+
     return data;
   }
 

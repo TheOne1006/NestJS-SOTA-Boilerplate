@@ -1,3 +1,4 @@
+/* istanbul ignore file */
 /**
  * winstorn 日志管理
  */

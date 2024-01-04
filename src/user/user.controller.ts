@@ -68,7 +68,7 @@ export class UserController {
   }
 
   /**
-   * 注册用户
+   * 创建新用户
    *
    * @param user
    */
