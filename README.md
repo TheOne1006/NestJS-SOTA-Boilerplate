@@ -4,6 +4,9 @@
 
 集成 NestJS + TS + swagger + class-validator + class-transformer + jest + JWT Auth + Authentication + i18n + compodoc 文档
 
+
+[![codecov.io](https://codecov.io/github/TheOne1006/NestJS-SOTA-Boilerplate/coverage.svg?branch=master)](https://codecov.io/github/TheOne1006/NestJS-SOTA-Boilerplate?branch=master)
+
 ## 核心思想
 
 1. 配置优于代码
