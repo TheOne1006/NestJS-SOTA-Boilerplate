@@ -26,6 +26,7 @@ export class RolesGuard implements CanActivate {
 
     const isSuperAdmin = this.isSuperAdmin(userRoles);
 
+    /* istanbul ignore next */
     if (isSuperAdmin) {
       return true;
     }

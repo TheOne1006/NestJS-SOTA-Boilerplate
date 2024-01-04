@@ -54,7 +54,7 @@ describe('filters any-exception.filter', () => {
       expect(mockLogger.error).toHaveBeenCalledTimes(2);
       expect(filter.output).toHaveBeenCalledTimes(1);
 
-      expect(filter.output).toBeCalledWith({}, 204, 204, err, {});
+      expect(filter.output).toHaveBeenCalledWith({}, 204, 204, err, {});
     });
 
     it('should ouput default status', () => {
@@ -68,7 +68,7 @@ describe('filters any-exception.filter', () => {
 
       expect(mockLogger.error).toHaveBeenCalledTimes(2);
       expect(filter.output).toHaveBeenCalledTimes(1);
-      expect(filter.output).toBeCalledWith({}, 500, 500, err, {});
+      expect(filter.output).toHaveBeenCalledWith({}, 500, 500, err, {});
     });
   });
 });

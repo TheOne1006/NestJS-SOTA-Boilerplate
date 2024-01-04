@@ -212,7 +212,7 @@ describe('guard RolesGuard', () => {
 
       guard = new RolesGuard(mockReflector);
 
-      const userRoles = ['user', 'super-2admin', 'user'];
+      const userRoles = ['user', 'super-2admin'];
 
       // @ts-ignore
       const actual = guard.isSuperAdmin(userRoles);

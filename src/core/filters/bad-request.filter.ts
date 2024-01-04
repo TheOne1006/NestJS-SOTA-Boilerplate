@@ -26,19 +26,9 @@ export class BadRequestFilter
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
 
-    const { message } = exception.getResponse() as any;
-
-    let extend = {};
-    if (Array.isArray(message)) {
-      extend = {
-        message: message.join(','),
-        messages: message,
-      };
-    }
-
     this.logger.warn(`BadRequest: ${exception}`);
     this.logger.warn(exception.stack);
 
-    this.output(response, statusCode, statusCode, exception, request, extend);
+    this.output(response, statusCode, statusCode, exception, request);
   }
 }
