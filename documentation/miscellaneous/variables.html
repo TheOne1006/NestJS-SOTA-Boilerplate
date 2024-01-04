@@ -1,0 +1,1264 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>example documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avaoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+
+               if ($darkModeToggles.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-block d-sm-none">
+            <a href="../" class="navbar-brand">example documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="请输入查询关键字"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content miscellaneous-variables">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">其他</li>
+  <li class="breadcrumb-item">变量</li>
+</ol>
+
+<section data-compodoc="block-index">
+    <h3 id="index">索引</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <ul class="index-list">
+                        <li>
+                            <a href="#ALL_ROLES" title="src/common/constants/role.constants.ts" ><b>ALL_ROLES</b>&nbsp;&nbsp;&nbsp;(src/.../role.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#AllResParams" title="src/common/decorators/req-params.decorator.ts" ><b>AllResParams</b>&nbsp;&nbsp;&nbsp;(src/.../req-params.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#CLASS_SERIALIZER_OPTIONS" title="src/common/constants/serializer.constants.ts" ><b>CLASS_SERIALIZER_OPTIONS</b>&nbsp;&nbsp;&nbsp;(src/.../serializer.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#config" title="config/index.ts" ><b>config</b>&nbsp;&nbsp;&nbsp;(config/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#curenv" title="config/index.ts" ><b>curenv</b>&nbsp;&nbsp;&nbsp;(config/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#databaseModule" title="src/core/database/database.module.ts" ><b>databaseModule</b>&nbsp;&nbsp;&nbsp;(src/.../database.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DEFAULT_RESPONSE_SUCCESS_CODE" title="src/common/constants/response.constants.ts" ><b>DEFAULT_RESPONSE_SUCCESS_CODE</b>&nbsp;&nbsp;&nbsp;(src/.../response.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#DEFAULT_RESPONSE_SUCCESS_MESSAGE" title="src/common/constants/response.constants.ts" ><b>DEFAULT_RESPONSE_SUCCESS_MESSAGE</b>&nbsp;&nbsp;&nbsp;(src/.../response.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#extendConfig" title="config/index.ts" ><b>extendConfig</b>&nbsp;&nbsp;&nbsp;(config/.../index.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#FALSY_STR_VALUES" title="src/common/constants/system.constants.ts" ><b>FALSY_STR_VALUES</b>&nbsp;&nbsp;&nbsp;(src/.../system.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#formatArgs" title="src/core/logger/logger.module.ts" ><b>formatArgs</b>&nbsp;&nbsp;&nbsp;(src/.../logger.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#i18nFilePath" title="src/core/i18n/i18n.module.ts" ><b>i18nFilePath</b>&nbsp;&nbsp;&nbsp;(src/.../i18n.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#JWT_SECRET" title="src/common/constants/system.constants.ts" ><b>JWT_SECRET</b>&nbsp;&nbsp;&nbsp;(src/.../system.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#loggerConfig" title="src/core/logger/logger.module.ts" ><b>loggerConfig</b>&nbsp;&nbsp;&nbsp;(src/.../logger.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#loggerModule" title="src/core/logger/logger.module.ts" ><b>loggerModule</b>&nbsp;&nbsp;&nbsp;(src/.../logger.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#loggerOptions" title="src/core/logger/logger.module.ts" ><b>loggerOptions</b>&nbsp;&nbsp;&nbsp;(src/.../logger.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#MAX_LIMIT" title="src/core/interceptors/logging.interceptor.ts" ><b>MAX_LIMIT</b>&nbsp;&nbsp;&nbsp;(src/.../logging.interceptor.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#prefix" title="src/users/users.controller.ts" ><b>prefix</b>&nbsp;&nbsp;&nbsp;(src/.../users.controller.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RESPONSE_SUCCESS_CODE" title="src/common/constants/response.constants.ts" ><b>RESPONSE_SUCCESS_CODE</b>&nbsp;&nbsp;&nbsp;(src/.../response.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#RESPONSE_SUCCESS_MESSAGE" title="src/common/constants/response.constants.ts" ><b>RESPONSE_SUCCESS_MESSAGE</b>&nbsp;&nbsp;&nbsp;(src/.../response.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ResSuccessCode" title="src/common/decorators/response.decorator.ts" ><b>ResSuccessCode</b>&nbsp;&nbsp;&nbsp;(src/.../response.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ResSuccessMessage" title="src/common/decorators/response.decorator.ts" ><b>ResSuccessMessage</b>&nbsp;&nbsp;&nbsp;(src/.../response.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROLE_AUTHENTICATED" title="src/common/constants/role.constants.ts" ><b>ROLE_AUTHENTICATED</b>&nbsp;&nbsp;&nbsp;(src/.../role.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROLE_SUPER_ADMIN" title="src/common/constants/role.constants.ts" ><b>ROLE_SUPER_ADMIN</b>&nbsp;&nbsp;&nbsp;(src/.../role.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROLE_USER" title="src/common/constants/role.constants.ts" ><b>ROLE_USER</b>&nbsp;&nbsp;&nbsp;(src/.../role.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#ROLE_VIP" title="src/common/constants/role.constants.ts" ><b>ROLE_VIP</b>&nbsp;&nbsp;&nbsp;(src/.../role.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#Roles" title="src/common/decorators/roles.decorator.ts" ><b>Roles</b>&nbsp;&nbsp;&nbsp;(src/.../roles.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#sequelizeConfig" title="src/core/database/database.module.ts" ><b>sequelizeConfig</b>&nbsp;&nbsp;&nbsp;(src/.../database.module.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SERIALIZER_CLASS" title="src/common/constants/serializer.constants.ts" ><b>SERIALIZER_CLASS</b>&nbsp;&nbsp;&nbsp;(src/.../serializer.constants.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#SerializerClass" title="src/common/decorators/serializer.decorator.ts" ><b>SerializerClass</b>&nbsp;&nbsp;&nbsp;(src/.../serializer.decorator.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#TEST_IP" title="src/common/auth/auth.middleware.ts" ><b>TEST_IP</b>&nbsp;&nbsp;&nbsp;(src/.../auth.middleware.ts)</a>
+                        </li>
+                        <li>
+                            <a href="#User" title="src/common/decorators/user.decorator.ts" ><b>User</b>&nbsp;&nbsp;&nbsp;(src/.../user.decorator.ts)</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    <h3>src/common/constants/role.constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ALL_ROLES"></a>
+                    <span class="name">
+                        <span ><b>ALL_ROLES</b></span>
+                        <a href="#ALL_ROLES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>[
+  ROLE_AUTHENTICATED,
+  ROLE_SUPER_ADMIN,
+  ROLE_VIP,
+  ROLE_USER,
+]</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLE_AUTHENTICATED"></a>
+                    <span class="name">
+                        <span ><b>ROLE_AUTHENTICATED</b></span>
+                        <a href="#ROLE_AUTHENTICATED"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;authenticated&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Role constants</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLE_SUPER_ADMIN"></a>
+                    <span class="name">
+                        <span ><b>ROLE_SUPER_ADMIN</b></span>
+                        <a href="#ROLE_SUPER_ADMIN"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;super-admin&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLE_USER"></a>
+                    <span class="name">
+                        <span ><b>ROLE_USER</b></span>
+                        <a href="#ROLE_USER"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;user&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ROLE_VIP"></a>
+                    <span class="name">
+                        <span ><b>ROLE_VIP</b></span>
+                        <a href="#ROLE_VIP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;vip&#x27;</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/decorators/req-params.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="AllResParams"></a>
+                    <span class="name">
+                        <span ><b>AllResParams</b></span>
+                        <a href="#AllResParams"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>createParamDecorator(
+  (data: unknown, ctx: ExecutionContext) &#x3D;&gt; {
+    const request &#x3D; ctx.switchToHttp().getRequest();
+    return {
+      query: request.query,
+      body: request.body,
+      params: request.params,
+    };
+  },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/constants/serializer.constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="CLASS_SERIALIZER_OPTIONS"></a>
+                    <span class="name">
+                        <span ><b>CLASS_SERIALIZER_OPTIONS</b></span>
+                        <a href="#CLASS_SERIALIZER_OPTIONS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;class_serializer:options&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>hack system
+格式化参数项</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SERIALIZER_CLASS"></a>
+                    <span class="name">
+                        <span ><b>SERIALIZER_CLASS</b></span>
+                        <a href="#SERIALIZER_CLASS"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;serializer:class&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>格式化的依赖类</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>config/index.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="config"></a>
+                    <span class="name">
+                        <span ><b>config</b></span>
+                        <a href="#config"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="../miscellaneous/variables.html#config" target="_self" >Iconfig</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>{
+  ...defaultConfig,
+  ...extendConfig,
+}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>环境配置项</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="curenv"></a>
+                    <span class="name">
+                        <span ><b>curenv</b></span>
+                        <a href="#curenv"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>process.env.NODE_ENV</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>当前环境</p>
+<p>test 测试
+production 生产
+develop 开发</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="extendConfig"></a>
+                    <span class="name">
+                        <span ><b>extendConfig</b></span>
+                        <a href="#extendConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>{}</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>扩展的config 信息</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/database/database.module.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="databaseModule"></a>
+                    <span class="name">
+                        <span ><b>databaseModule</b></span>
+                        <a href="#databaseModule"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>SequelizeModule.forRoot({
+  ...sequelizeConfig,
+  autoLoadModels: true,
+  synchronize: false,
+})</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>数据库模块</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sequelizeConfig"></a>
+                    <span class="name">
+                        <span ><b>sequelizeConfig</b></span>
+                        <a href="#sequelizeConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>config.sequelize</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>配置参数</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/constants/response.constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DEFAULT_RESPONSE_SUCCESS_CODE"></a>
+                    <span class="name">
+                        <span ><b>DEFAULT_RESPONSE_SUCCESS_CODE</b></span>
+                        <a href="#DEFAULT_RESPONSE_SUCCESS_CODE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>0</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>默认code返回值</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="DEFAULT_RESPONSE_SUCCESS_MESSAGE"></a>
+                    <span class="name">
+                        <span ><b>DEFAULT_RESPONSE_SUCCESS_MESSAGE</b></span>
+                        <a href="#DEFAULT_RESPONSE_SUCCESS_MESSAGE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;success&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>返回 message 返回值</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RESPONSE_SUCCESS_CODE"></a>
+                    <span class="name">
+                        <span ><b>RESPONSE_SUCCESS_CODE</b></span>
+                        <a href="#RESPONSE_SUCCESS_CODE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;response:success:code&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>响应成功 code</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="RESPONSE_SUCCESS_MESSAGE"></a>
+                    <span class="name">
+                        <span ><b>RESPONSE_SUCCESS_MESSAGE</b></span>
+                        <a href="#RESPONSE_SUCCESS_MESSAGE"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;response:success:message&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>响应成功 message 信息</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/constants/system.constants.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="FALSY_STR_VALUES"></a>
+                    <span class="name">
+                        <span ><b>FALSY_STR_VALUES</b></span>
+                        <a href="#FALSY_STR_VALUES"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>[&#x27;false&#x27;, &#x27;0&#x27;, &#x27;null&#x27;, &#x27;undefined&#x27;, &#x27;&#x27;]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>string 版本的 false 值</p>
+<p>满足一下的文字,表示为 false</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="JWT_SECRET"></a>
+                    <span class="name">
+                        <span ><b>JWT_SECRET</b></span>
+                        <a href="#JWT_SECRET"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;skjdkaj1j2jxxx91213ddudhfs12323&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>jwt secret</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/logger/logger.module.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatArgs"></a>
+                    <span class="name">
+                        <span ><b>formatArgs</b></span>
+                        <a href="#formatArgs"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>[
+  nestWinstonModuleUtilities.format.nestLike(loggerConfig.appName || &#x27;example&#x27;),
+]</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>日志格式化参数
+是否添加日志时间</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loggerConfig"></a>
+                    <span class="name">
+                        <span ><b>loggerConfig</b></span>
+                        <a href="#loggerConfig"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>config.logger</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>日志配置</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loggerModule"></a>
+                    <span class="name">
+                        <span ><b>loggerModule</b></span>
+                        <a href="#loggerModule"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>WinstonModule.forRoot(loggerOptions)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>logger 模块</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loggerOptions"></a>
+                    <span class="name">
+                        <span ><b>loggerOptions</b></span>
+                        <a href="#loggerOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>    <code>LoggerOptions</code>
+
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>logger服务参数</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/i18n/i18n.module.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="i18nFilePath"></a>
+                    <span class="name">
+                        <span ><b>i18nFilePath</b></span>
+                        <a href="#i18nFilePath"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>path.join(__dirname, &#x27;..&#x27;, &#x27;..&#x27;, &#x27;i18n&#x27;)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>i18n 路径
+注意: 与 dist 中的目录保持一致</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/core/interceptors/logging.interceptor.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="MAX_LIMIT"></a>
+                    <span class="name">
+                        <span ><b>MAX_LIMIT</b></span>
+                        <a href="#MAX_LIMIT"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>200</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>响应时长超过 200 ms</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/users/users.controller.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prefix"></a>
+                    <span class="name">
+                        <span ><b>prefix</b></span>
+                        <a href="#prefix"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>config.API_V1</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/decorators/response.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ResSuccessCode"></a>
+                    <span class="name">
+                        <span ><b>ResSuccessCode</b></span>
+                        <a href="#ResSuccessCode"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>(code: number) &#x3D;&gt;
+  SetMetadata(RESPONSE_SUCCESS_CODE, code)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>设置响应 code</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ResSuccessMessage"></a>
+                    <span class="name">
+                        <span ><b>ResSuccessMessage</b></span>
+                        <a href="#ResSuccessMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>(message: string) &#x3D;&gt;
+  SetMetadata(RESPONSE_SUCCESS_MESSAGE, message)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>设置正确响应的 message</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/decorators/roles.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="Roles"></a>
+                    <span class="name">
+                        <span ><b>Roles</b></span>
+                        <a href="#Roles"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>(...roles: string[]) &#x3D;&gt; SetMetadata(&#x27;roles&#x27;, roles)</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>设置所需的访问角色</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/decorators/serializer.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="SerializerClass"></a>
+                    <span class="name">
+                        <span ><b>SerializerClass</b></span>
+                        <a href="#SerializerClass"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>(plainClass: any) &#x3D;&gt;
+  SetMetadata(SERIALIZER_CLASS, plainClass)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/auth/auth.middleware.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="TEST_IP"></a>
+                    <span class="name">
+                        <span ><b>TEST_IP</b></span>
+                        <a href="#TEST_IP"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>类型 : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>&#x27;10.200.0.45&#x27;</code>
+                    </td>
+                </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>用于本地测试 替换为 某一值</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+    <h3>src/common/decorators/user.decorator.ts</h3>
+    <section data-compodoc="block-properties">
+    <h3></h3>    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="User"></a>
+                    <span class="name">
+                        <span ><b>User</b></span>
+                        <a href="#User"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>缺省值 : </i><code>createParamDecorator(
+  (data: unknown, ctx: ExecutionContext) &#x3D;&gt; {
+    const request &#x3D; ctx.switchToHttp().getRequest();
+    return request.user;
+  },
+)</code>
+                    </td>
+                </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> 匹配的结果 "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">无匹配的结果 "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'miscellaneous-variables';
+            var COMPODOC_CURRENT_PAGE_URL = 'variables.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

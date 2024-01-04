@@ -3,7 +3,6 @@ import { join } from 'path';
 import { FileExist } from '../file-exist.decorator';
 
 describe('decorators FileExist', () => {
-
   describe('should support failed', () => {
     const mocksDir = join(__dirname, '__mocks__');
     // const file1Path = join(mocksDir, 'file1');
@@ -11,11 +10,12 @@ describe('decorators FileExist', () => {
 
     const mockCreateFile = jest.fn();
 
-    const mockFileExists = jest.fn()
+    const mockFileExists = jest
+      .fn()
       .mockReturnValueOnce('')
       .mockReturnValueOnce(123)
       .mockReturnValueOnce(file2Path)
-      .mockReturnValueOnce(new Error('error'))
+      .mockReturnValueOnce(new Error('error'));
 
     class TestClass {
       @FileExist(mockFileExists)
@@ -25,26 +25,25 @@ describe('decorators FileExist', () => {
     }
 
     it('should support failed return', () => {
-
       const testObj = new TestClass();
 
       testObj.createFile(file2Path);
-      expect(mockCreateFile).toBeCalled()
+      expect(mockCreateFile).toBeCalled();
 
       testObj.createFile(file2Path);
-      expect(mockCreateFile).toBeCalledTimes(2)
+      expect(mockCreateFile).toBeCalledTimes(2);
 
       testObj.createFile(file2Path);
-      expect(mockCreateFile).toBeCalledTimes(3)
-    })
+      expect(mockCreateFile).toBeCalledTimes(3);
+    });
 
     it('should support ignore throw error', () => {
       const testObj = new TestClass();
 
       testObj.createFile(file2Path);
-      expect(mockCreateFile).toBeCalledTimes(4)
-    })
-  })
+      expect(mockCreateFile).toBeCalledTimes(4);
+    });
+  });
 
   describe('should support exist', () => {
     const mocksDir = join(__dirname, '__mocks__');
@@ -53,8 +52,7 @@ describe('decorators FileExist', () => {
 
     const mockCreateFile = jest.fn();
 
-    const mockFileExists = jest.fn()
-      .mockReturnValueOnce(file1Path);
+    const mockFileExists = jest.fn().mockReturnValueOnce(file1Path);
 
     class TestClass {
       @FileExist(mockFileExists)
@@ -64,11 +62,10 @@ describe('decorators FileExist', () => {
     }
 
     it('should support with cache', () => {
-
       const testObj = new TestClass();
 
       testObj.createFile(file2Path);
-      expect(mockCreateFile).toBeCalledTimes(0)
-    })
-  })
+      expect(mockCreateFile).toBeCalledTimes(0);
+    });
+  });
 });
