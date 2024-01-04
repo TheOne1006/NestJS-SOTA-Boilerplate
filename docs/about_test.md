@@ -2,6 +2,8 @@
 
 > 执行
 ```bash
+yarn migrate:up --env test # 初始化 db
+
 yarn test # 启动测试
 
 yarn test:cov # 覆盖率
