@@ -22,7 +22,7 @@ import { RequestUser } from '../common/interfaces';
 import { UserDto, CreateUserDto, UpdatePasswordDto } from './dtos';
 
 import { config } from '../../config';
-import { UsersService } from './users.service';
+import { UserService } from './user.service';
 
 const prefix = config.API_V1;
 
@@ -33,8 +33,8 @@ const prefix = config.API_V1;
 @ApiTags('user')
 @UseInterceptors(SerializerInterceptor)
 @Controller('users')
-export class UsersController {
-  constructor(private readonly userService: UsersService) {}
+export class UserController {
+  constructor(private readonly userService: UserService) {}
   /**
    * 获取用户自身数据
    *

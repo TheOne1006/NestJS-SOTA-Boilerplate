@@ -19,7 +19,6 @@
     - 通过 `yarn doc` 构建文档信息
 4. 测试 jest
     - 单元测试
-    - 端对端测试
 5. Linter
     - eslint + prettier = ❤️
 6. 环境配置 env.*

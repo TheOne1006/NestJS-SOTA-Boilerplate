@@ -50,10 +50,10 @@ yarn start:dev
 $ yarn doc:serve
 
 # create controller
-$ nest g controller users
+$ nest g controller user
 
 # create module
-$ nest g module users
+$ nest g module user
 
 # 创建 mysql 文件
 yarn migrate:new -- --name user # 创建文件 databases/migrations/xxx-user.js

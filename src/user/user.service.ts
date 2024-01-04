@@ -4,7 +4,7 @@ import crypto from 'crypto';
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
 
-import { User } from './users.entity';
+import { User } from './user.entity';
 import { CreateUserDto, UserDto } from './dtos';
 
 /**
@@ -33,7 +33,7 @@ function genSalt(length: number = 8): string {
  *
  */
 @Injectable()
-export class UsersService {
+export class UserService {
   constructor(
     @InjectModel(User)
     private readonly userModel: typeof User,

@@ -22,6 +22,9 @@ export interface PlainLiteralObject {
 
 @Injectable()
 export class SerializerInterceptor extends ClassSerializerInterceptor {
+  /**
+   * 拦截器默认配置
+   */
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const contextOptions = this._getContextOptions(
       context,
@@ -44,6 +47,12 @@ export class SerializerInterceptor extends ClassSerializerInterceptor {
       );
   }
 
+  /**
+   * 序列化 response
+   * @param response
+   * @param options
+   * @returns
+   */
   serialize(
     response: PlainLiteralObject | Array<PlainLiteralObject>,
     options: ClassTransformOptions & { planClass?: ClassConstructor<any> },

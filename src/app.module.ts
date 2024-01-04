@@ -8,7 +8,7 @@ import { CoreModule } from './core/core.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
+import { UsersModule } from './user/user.module';
 
 @Module({
   imports: [CoreModule, UsersModule],

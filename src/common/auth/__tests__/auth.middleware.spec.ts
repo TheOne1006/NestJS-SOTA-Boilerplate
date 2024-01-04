@@ -88,7 +88,7 @@ describe('AuthMiddleware', () => {
       const actual = mockReq['user'];
 
       const expected = {
-        id: '_mock1',
+        id: 1001,
         username: '_mock1',
         email: '',
         roles: ['super-admin'],

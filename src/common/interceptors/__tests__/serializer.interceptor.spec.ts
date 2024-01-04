@@ -11,7 +11,7 @@ import { SerializerClass } from '../../decorators';
 import { SERIALIZER_CLASS, CLASS_SERIALIZER_OPTIONS } from '../../constants';
 
 describe('Interceptor SerializerInterceptor', () => {
-  describe.skip('intercept()', () => {
+  describe('intercept()', () => {
     const mockReturn = jest.fn().mockReturnValueOnce({
       id: 'id',
       type: 'mock',
@@ -38,15 +38,11 @@ describe('Interceptor SerializerInterceptor', () => {
         TestClass.foo,
       );
 
-      // const expected = {
-      //   id: 'id',
-      //   type: 'mock'
-      // };
       expect(metadata[0]).toEqual(SerializerInterceptor);
     });
   });
 
-  describe.skip('intercept2()', () => {
+  describe('intercept2()', () => {
     class MockPlanClass {
       id: number;
 
@@ -68,28 +64,33 @@ describe('Interceptor SerializerInterceptor', () => {
 
     const context = createMock<ExecutionContext>();
 
-    it('should intercept', () => {
+    it('should intercept', async () => {
       const interceptor = new SerializerInterceptor(mockReflector);
 
       const result = {
         id: '123',
         name: 'mock result',
       };
+
       const next = {
         handle: () => of(result),
       } as any;
 
       const actual = interceptor.intercept(context, next);
 
+      const actualSubscribe = await new Promise((resolve) => {
+        actual.subscribe((value) => {
+          resolve(value);
+        });
+      });
+
       const expected = {
         id: '123',
         name: 'mock result',
       };
 
-      console.log(actual);
-
-      expect(actual).toEqual(expected);
-      expect(actual).toBeInstanceOf(MockPlanClass);
+      expect(actualSubscribe).toEqual(expected);
+      expect(actualSubscribe).toBeInstanceOf(MockPlanClass);
     });
 
     it('should support loss planClass', () => {

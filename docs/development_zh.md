@@ -1,16 +1,12 @@
 # Setup and development 设置和开发
 
-- [Setup and development](#setup-and-development)
-  - [首次配置](#first-time-setup)
-  - [安装](#installation)
+- [Setup and development 设置和开发](#setup-and-development-设置和开发)
+  - [First-time setup](#first-time-setup)
+  - [Installation](#installation)
     - [Database](#database)
     - [Configuration](#configuration)
     - [Dev server](#dev-server)
   - [Generators](#generators)
-  - [Docker](#docker)
-    - [Docker installation](#docker-installation)
-    - [Docker-compose installation](#docker-compose-installation)
-    - [Run](#run)
 
 ## First-time setup
 
@@ -72,10 +68,10 @@ yarn debug:dev
 yarn global add @nestjs/cli
 
 # Generate a new service
-nest generate service users
+nest generate service user
 
 # Generate a new class
-nest g class users
+nest g class user
 
 ```
 
