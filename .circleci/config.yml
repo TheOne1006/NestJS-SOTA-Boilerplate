@@ -1,7 +1,6 @@
 version: 2.1
 orbs:
-  node: circleci/node@5.1.0
-  - codecov/codecov@3.2.4
+  node: circleci/node@5.0.2
 jobs:
   job-test:
     executor: node/default # use the default executor defined within the orb
