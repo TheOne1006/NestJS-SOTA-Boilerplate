@@ -1,13 +1,6 @@
 import { uniq } from 'lodash';
-import {
-  CanActivate,
-  ExecutionContext,
-  Injectable,
-  HttpStatus,
-  HttpException,
-} from '@nestjs/common';
+import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-import { I18nContext, I18nService } from 'nestjs-i18n';
 import { RequestUser } from '../interfaces';
 import { ROLE_SUPER_ADMIN } from '../../common/constants';
 
@@ -18,10 +11,7 @@ import { ROLE_SUPER_ADMIN } from '../../common/constants';
  */
 @Injectable()
 export class RolesGuard implements CanActivate {
-  constructor(
-    protected readonly reflector: Reflector,
-    private readonly i18n: I18nService,
-  ) {}
+  constructor(protected readonly reflector: Reflector) {}
 
   /**
    * 对比用户和所需的角色判断是否能访问方法
@@ -41,14 +31,6 @@ export class RolesGuard implements CanActivate {
     }
 
     const allow = this.allowAccess(allowRoles, userRoles);
-
-    if (!allow) {
-      const errMsg = this.i18n.t('error.FORBIDDEN', {
-        lang: I18nContext.current().lang,
-      });
-
-      throw new HttpException(errMsg, HttpStatus.FORBIDDEN);
-    }
 
     return allow;
   }

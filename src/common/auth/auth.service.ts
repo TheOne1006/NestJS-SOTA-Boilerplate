@@ -41,7 +41,7 @@ export class AuthService {
     }
 
     try {
-      const token_user = this.jwtService.decode(token);
+      const token_user = await this.jwtService.verifyAsync(token);
       user.id = token_user.id;
       user.username = token_user.username;
       user.email = token_user.email;

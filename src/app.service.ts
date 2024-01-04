@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { I18nContext, I18nService } from 'nestjs-i18n';
+import { I18nService, I18nLang } from 'nestjs-i18n';
 
 /**
  * @ignore
@@ -10,9 +10,9 @@ export class AppService {
   /**
    * @ignore
    */
-  async getHello(): Promise<string> {
+  getHello(@I18nLang() lang: string): string {
     return this.i18n.t('global.HELLO_MESSAGE', {
-      lang: I18nContext.current().lang,
+      lang,
       args: [{ username: 'world' }],
     });
   }

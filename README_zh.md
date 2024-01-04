@@ -1,12 +1,13 @@
 #  NestJS REST Boilerplate
 
-> 用于构建新项目, 使用[NestJS](https://nestjs.com) 框架. 欢迎提出您的宝贵意见. 😄
+> 用于构建新项目, 使用[NestJS](https://nestjs.com) 框架. 欢迎提出您的宝贵意见. 
 
 ## Features
 
 1. Swagger 文档
     - 提供 API 稳定.启动项目后访问 http://localhost:3000/api
 2. sequelize
+    - orm for SQL DB
 3. 构建文档
     - 通过 `yarn doc` 构建文档信息
 4. 测试 jest
@@ -17,6 +18,7 @@
 6. 环境配置 env.*
 7. 标准路由
 8. jwt 权鉴
+9. 国际化 i18n
 
 ## Getting started
 

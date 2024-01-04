@@ -2,8 +2,12 @@
 import { createMock } from '@golevelup/ts-jest';
 import { ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
-
+import { I18nService } from 'nestjs-i18n';
 import { RolesGuard } from '../roles.guard';
+
+export const I18nServiceMock = {
+  t: jest.fn().mockImplementation((key) => key),
+} as any as I18nService;
 
 describe('guard RolesGuard', () => {
   let guard: RolesGuard;
@@ -141,14 +145,8 @@ describe('guard RolesGuard', () => {
       };
       context.switchToHttp().getRequest.mockReturnValue(req);
 
-      let err: any;
-      try {
-        guard.canActivate(context);
-      } catch (error) {
-        err = error;
-      }
-
-      expect(err.response.key).toEqual('error.FORBIDDEN');
+      const actual = guard.canActivate(context);
+      expect(actual).toEqual(false);
     });
 
     it('should return false if empty roles', () => {
@@ -160,14 +158,9 @@ describe('guard RolesGuard', () => {
       };
       context.switchToHttp().getRequest.mockReturnValue(req);
 
-      let err: any;
-      try {
-        guard.canActivate(context);
-      } catch (error) {
-        err = error;
-      }
+      const actual = guard.canActivate(context);
 
-      expect(err.response.key).toEqual('error.FORBIDDEN');
+      expect(actual).toEqual(false);
     });
 
     it('should return false if unmatch roles', () => {
@@ -179,14 +172,9 @@ describe('guard RolesGuard', () => {
       };
       context.switchToHttp().getRequest.mockReturnValue(req);
 
-      let err: any;
-      try {
-        guard.canActivate(context);
-      } catch (error) {
-        err = error;
-      }
+      const actual = guard.canActivate(context);
 
-      expect(err.response.key).toEqual('error.FORBIDDEN');
+      expect(actual).toEqual(false);
     });
 
     it('should return true if match roles', () => {

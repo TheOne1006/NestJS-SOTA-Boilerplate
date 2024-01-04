@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Test, TestingModule } from '@nestjs/testing';
-import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
+import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 import { Logger } from 'winston';
+import { JwtService } from '@nestjs/jwt';
 
 import { AuthService } from '../auth.service';
 
 describe('AuthService', () => {
   let service: AuthService;
   let mockLogger: Logger;
+  let mockJwtService: JwtService;
 
   beforeAll(async () => {
     mockLogger = {
@@ -17,13 +19,22 @@ describe('AuthService', () => {
       error: jest.fn(),
     } as any as Logger;
 
+    mockJwtService = {
+      signAsync: jest.fn(),
+      verifyAsync: jest.fn(),
+    } as any as JwtService;
+
     const moduleRef: TestingModule = await Test.createTestingModule({
       imports: [],
       providers: [
         AuthService,
         {
-          provide: WINSTON_MODULE_PROVIDER,
+          provide: WINSTON_MODULE_NEST_PROVIDER,
           useValue: mockLogger,
+        },
+        {
+          provide: JwtService,
+          useValue: mockJwtService,
         },
       ],
     }).compile();
@@ -44,17 +55,27 @@ describe('AuthService', () => {
         error: jest.fn(),
       } as any as Logger;
 
+      mockJwtService = {
+        signAsync: jest.fn(),
+        verifyAsync: jest.fn().mockImplementation(() => ({
+          username: 'uname',
+          email: '',
+          id: 'uid100',
+          roles: ['authenticated', 'super-admin'],
+        })),
+      } as any as JwtService;
+
       const moduleRef: TestingModule = await Test.createTestingModule({
         imports: [],
         providers: [
           AuthService,
-          // {
-          //   provide: RedisService,
-          //   useValue: mockRedisService,
-          // },
           {
-            provide: WINSTON_MODULE_PROVIDER,
+            provide: WINSTON_MODULE_NEST_PROVIDER,
             useValue: mockLogger,
+          },
+          {
+            provide: JwtService,
+            useValue: mockJwtService,
           },
         ],
       }).compile();
@@ -68,6 +89,7 @@ describe('AuthService', () => {
       const expected = {
         id: null,
         username: '',
+        email: '',
         roles: [],
         ip: '127.0.0.1',
       };
@@ -76,24 +98,12 @@ describe('AuthService', () => {
     });
 
     it('should successfly with some roles', async () => {
-      // @ts-ignore 修改 validWithRole 返回
-      service.validWithRole = jest
-        .fn()
-        .mockReturnValueOnce({
-          username: 'uname',
-          id: 'uid100',
-        })
-        .mockReturnValueOnce({
-          username: 'uname',
-          id: 'uid100',
-        })
-        .mockReturnValueOnce(undefined);
-
       // @ts-ignore
       const actual = await service.check('token', '127.0.0.1');
 
       const expected = {
         username: 'uname',
+        email: '',
         id: 'uid100',
         roles: ['authenticated', 'super-admin'],
         ip: '127.0.0.1',

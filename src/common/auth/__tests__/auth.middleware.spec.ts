@@ -10,7 +10,7 @@ describe('AuthMiddleware', () => {
 
   beforeAll(() => {
     mockAuthService = {
-      checkWithCache: jest.fn().mockReturnValue({
+      check: jest.fn().mockReturnValue({
         id: 'id1000',
         ip: '127.0.0.1',
         roles: ['super-admin'],
@@ -25,36 +25,21 @@ describe('AuthMiddleware', () => {
     expect(middleware).toBeDefined();
   });
 
-  describe('static parseMockToken()', () => {
-    it('should parse token string', () => {
-      const mockToken = '_mock1,textbooks-admin,super-admin';
-
-      // @ts-ignore
-      const actual = AuthMiddleware.parseMockToken(mockToken, '127.0.0.1');
-      const expected = {
-        id: '_mock1',
-        username: '_mock1',
-        roles: ['textbooks-admin', 'super-admin'],
-        ip: '127.0.0.1',
-      };
-
-      expect(actual).toEqual(expected);
-    });
-  });
-
   describe('use()', () => {
     beforeAll(() => {
       mockAuthService = {
-        checkWithCache: jest
+        check: jest
           .fn()
           .mockReturnValueOnce({
             id: null,
+            email: '',
             username: '',
             roles: [],
             ip: '',
           })
           .mockReturnValueOnce({
             id: 'uid100',
+            email: '',
             username: 'uname',
             roles: ['super-admin'],
             ip: '10.1.2.1',
@@ -79,6 +64,7 @@ describe('AuthMiddleware', () => {
       const expected = {
         id: null,
         username: '',
+        email: '',
         roles: [],
         ip: '',
       };
@@ -104,6 +90,7 @@ describe('AuthMiddleware', () => {
       const expected = {
         id: '_mock1',
         username: '_mock1',
+        email: '',
         roles: ['super-admin'],
         ip: '127.0.0.1',
       };
@@ -129,6 +116,7 @@ describe('AuthMiddleware', () => {
       const expected = {
         id: 'uid100',
         username: 'uname',
+        email: '',
         roles: ['super-admin'],
       };
 
