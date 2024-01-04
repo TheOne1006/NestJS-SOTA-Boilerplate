@@ -4,6 +4,7 @@ import { Test, TestingModule } from '@nestjs/testing';
 // import { Sequelize } from 'sequelize';
 import { User } from '../user.entity';
 import { UserService } from '../user.service';
+import { ROLE_USER } from '../../common/constants';
 import { CoreModule } from '../../core/core.module';
 
 describe('UserService', () => {
@@ -124,7 +125,7 @@ describe('UserService', () => {
         const expectedUsers = {
           id: 5,
           username: 'delete trans',
-          email: 'ddaass@xxx.com',
+          email: 'deltetrans@xxx.com',
           salt: '1233',
         };
         // 包含
@@ -143,6 +144,7 @@ describe('UserService', () => {
           username: 'lddka',
           email: 'ddaass@xxx.com',
           password: 'xxxxx',
+          roles: [ROLE_USER],
         });
 
         const expected = {

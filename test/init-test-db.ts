@@ -29,7 +29,8 @@ export async function loadMockData(moduleFixture: TestingModule) {
         await CurModel.bulkCreate(current.bulkData);
       }
     } catch (error) {
-      console.error('helper error at', getModelToken(current.entity));
+      console.log(error);
+      console.error('init error at', getModelToken(current.entity));
     }
   }
 }

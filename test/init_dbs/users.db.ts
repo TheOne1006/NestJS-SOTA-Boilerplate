@@ -31,7 +31,7 @@ const initUsers = [
   {
     id: 5,
     username: 'delete trans',
-    email: 'ddaass@xxx.com',
+    email: 'deltetrans@xxx.com',
     salt: '1233',
     password: 'xxxxx',
     roles: [ROLE_AUTHENTICATED, ROLE_SUPER_ADMIN],

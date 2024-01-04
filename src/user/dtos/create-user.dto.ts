@@ -14,7 +14,7 @@ import {
   ROLE_VIP,
   ROLE_USER,
   ROLE_SUPER_ADMIN,
-  ENUM_ROLES,
+  // ENUM_ROLES,
 } from '../../common/constants/role.constants';
 
 /**
@@ -76,5 +76,5 @@ export class CreateUserDto {
   })
   @IsArray()
   @ArrayNotEmpty()
-  roles: ENUM_ROLES[];
+  roles: string[];
 }

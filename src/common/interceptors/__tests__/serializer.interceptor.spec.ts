@@ -287,7 +287,7 @@ describe('Interceptor SerializerInterceptor', () => {
     });
   });
 
-  describe('transformPlanToClass()', () => {
+  describe('transformPlainToClass()', () => {
     const mockReflector = {
       get: jest.fn(),
     } as any as Reflector;
@@ -312,7 +312,7 @@ describe('Interceptor SerializerInterceptor', () => {
         }),
       };
 
-      const actual = interceptor.transformPlanToClass(
+      const actual = interceptor.transformPlainToClass(
         MockPlanClass,
         mockDoc,
         {},
