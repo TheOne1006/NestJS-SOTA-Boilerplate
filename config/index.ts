@@ -1,6 +1,6 @@
 import { config as defaultConfig, Iconfig } from './config.default';
 import { config as devConfig } from './config.development';
-import { config as testConfig } from './config.unittest';
+import { config as testConfig } from './config.test';
 import { config as prodConfig } from './config.production';
 
 /**

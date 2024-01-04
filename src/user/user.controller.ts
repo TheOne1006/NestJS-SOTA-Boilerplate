@@ -63,7 +63,7 @@ export class UserController {
   })
   @SerializerClass(UserDto)
   @ApiResponse({ status: 403, description: 'Forbidden.' })
-  async getUserCurrent(@User() user: RequestUser): Promise<UserDto> {
+  async getUserCurrent(@User() user: RequestUser): Promise<RequestUser> {
     return user;
   }
 
@@ -77,7 +77,7 @@ export class UserController {
   @ApiOperation({
     summary: '创建新用户',
   })
-  @SerializerClass(CreateUserDto)
+  @SerializerClass(UserDto)
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   async create(
     @Body() newUserDto: CreateUserDto,
@@ -97,7 +97,7 @@ export class UserController {
   @ApiOperation({
     summary: '更新密码',
   })
-  @SerializerClass(CreateUserDto)
+  @SerializerClass(UserDto)
   @ApiResponse({ status: 403, description: 'Forbidden.' })
   async updatePassword(
     @Body(new ValidationPipe()) newPassword: UpdatePasswordDto,

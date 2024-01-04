@@ -14,9 +14,10 @@ export const config = {
     logging: false,
   },
   logger: {
-    appName: 'example',
-    level: 'info',
+    appName: 'test_app',
+    level: 'error',
     timestamp: true,
     // filename: 'log/all.log',
   },
+  API_V1: '',
 };

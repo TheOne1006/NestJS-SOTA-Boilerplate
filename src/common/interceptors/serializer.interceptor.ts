@@ -70,14 +70,14 @@ export class SerializerInterceptor extends ClassSerializerInterceptor {
 
     if (isArray) {
       return (response as PlainLiteralObject[]).map((item) =>
-        this.transformPlanToClass(planClass, item, otherOptions),
+        this.transformPlainToClass(planClass, item, otherOptions),
       );
     }
 
-    return this.transformPlanToClass(planClass, response, otherOptions);
+    return this.transformPlainToClass(planClass, response, otherOptions);
   }
 
-  transformPlanToClass(
+  transformPlainToClass(
     plainClass: ClassConstructor<any>,
     object: PlainLiteralObject,
     options: ClassTransformOptions,

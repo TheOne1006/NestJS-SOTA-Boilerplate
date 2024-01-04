@@ -14,3 +14,10 @@ export const ALL_ROLES = [
   ROLE_VIP,
   ROLE_USER,
 ];
+
+export enum ENUM_ROLES {
+  ROLE_AUTHENTICATED = 'authenticated',
+  ROLE_SUPER_ADMIN = 'super-admin',
+  ROLE_VIP = 'vip',
+  ROLE_USER = 'user',
+}

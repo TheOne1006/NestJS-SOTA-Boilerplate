@@ -1,6 +1,22 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsEmail, Length } from 'class-validator';
+import {
+  IsString,
+  IsNotEmpty,
+  IsEmail,
+  Length,
+  ArrayNotEmpty,
+  IsArray,
+  IsEnum,
+} from 'class-validator';
 import { i18nValidationMessage } from 'nestjs-i18n';
+import {
+  ROLE_AUTHENTICATED,
+  ROLE_VIP,
+  ROLE_USER,
+  ROLE_SUPER_ADMIN,
+  ENUM_ROLES,
+} from '../../common/constants/role.constants';
+
 /**
  * CreateUserDto
  */
@@ -20,9 +36,12 @@ export class CreateUserDto {
   })
   username: string;
 
-  @IsEmail(null, {
-    message: i18nValidationMessage('validation.EMAIL'),
-  })
+  @IsEmail(
+    {},
+    {
+      message: i18nValidationMessage('validation.EMAIL'),
+    },
+  )
   @IsNotEmpty({
     message: i18nValidationMessage('validation.NOT_EMPTY'),
   })
@@ -46,4 +65,16 @@ export class CreateUserDto {
     description: '密码',
   })
   password: string;
+
+  @ApiProperty({
+    example: [ROLE_AUTHENTICATED, ROLE_USER],
+    description: '角色',
+  })
+  @IsEnum([ROLE_AUTHENTICATED, ROLE_VIP, ROLE_USER, ROLE_SUPER_ADMIN], {
+    each: true,
+    message: i18nValidationMessage('validation.ENUM'),
+  })
+  @IsArray()
+  @ArrayNotEmpty()
+  roles: ENUM_ROLES[];
 }

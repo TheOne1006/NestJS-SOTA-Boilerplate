@@ -13,5 +13,23 @@ export class UserDto {
   roles: string[];
 
   @Exclude()
+  salt: string;
+
+  @Exclude()
+  password: string;
+
+  @Exclude()
   ip?: string;
+
+  @Exclude()
+  updatedAt: Date;
+
+  @Exclude()
+  createdAt: Date;
+
+  @Exclude()
+  isDeleted: boolean;
+
+  @Exclude()
+  version: number;
 }
