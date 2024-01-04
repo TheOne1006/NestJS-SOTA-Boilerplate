@@ -4,6 +4,8 @@ node_js:
   - 'lts/*'
 cache:
   yarn: true
+before_script:
+  - yarn migrate:up --env test
 install:
   - yarn
 script:
