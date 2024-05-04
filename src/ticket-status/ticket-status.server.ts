@@ -6,7 +6,7 @@ import {
   TicketStatuCreateItemDto,
 } from './dtos';
 
-const MODEL_NAME = 'ticket-status';
+const MODEL_NAME = 'ticket_status';
 
 @Injectable()
 export class TicketStatusService {
@@ -37,7 +37,7 @@ export class TicketStatusService {
   async findWithDatesAndProjectTitle(
     projectTitle: string,
     dates: string[],
-  ): Promise<TicketStatusDto[]> {
+  ): Promise<AV.Queriable[]> {
     const query = this.createQuery();
     query.equalTo('projectTitle', projectTitle);
     // query.equalTo('date', date);
@@ -45,7 +45,7 @@ export class TicketStatusService {
 
     const list = await query.find();
 
-    return list as any[] as TicketStatusDto[];
+    return list as any[] as AV.Queriable[];
   }
 
   async batchUpsert(ins: AV.Queriable[]): Promise<TicketStatusDto[]> {

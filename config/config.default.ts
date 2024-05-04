@@ -29,10 +29,6 @@ export interface Iconfig {
     endPoint: string;
   };
   port: number | string;
-  APP_CONFIG: {
-    JWT_SECRET: string;
-    JWT_SECRET_EXPIRESIN: string; // token 过期时间
-  };
 }
 
 /**
@@ -58,8 +54,4 @@ export const config: Iconfig = {
     endPoint: 'api',
   },
   port: process.env.PORT || 3000,
-  APP_CONFIG: {
-    JWT_SECRET: process.env.JWT_SECRET || 'sksjdkjakjuuyqqwqxxzffqqwewewqqwe',
-    JWT_SECRET_EXPIRESIN: process.env.JWT_SECRET_EXPIRESIN || '10d', // token 过期时间
-  },
 };

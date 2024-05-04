@@ -72,11 +72,15 @@ export class TicketStatusController {
       title: inputData.projectTitle,
     });
 
+    if (!project) {
+      throw new Error('project not found');
+    }
+
     /**
      * 根据 inputData.items[].status 更新 list, 没有则新增
      */
     const updateList = inputData.items.map((item) => {
-      const found = list.find((l) => l.date === item.date) as any as
+      const found = list.find((l) => l.get('date') === item.date) as any as
         | AV.Queriable
         | undefined;
 
