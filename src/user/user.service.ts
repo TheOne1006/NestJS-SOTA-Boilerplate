@@ -1,32 +1,13 @@
 // import * as _ from 'lodash';
-import { Transaction, SaveOptions } from 'sequelize';
-import { createHash } from 'crypto';
-import { Injectable } from '@nestjs/common';
-import { InjectModel } from '@nestjs/sequelize';
+import { Injectable, Logger } from '@nestjs/common';
+import { AV } from '../common/leancloud';
+import {
+  // InputLoginDto,
+  UserDto,
+  LoginedUserDto,
+} from './dtos';
 
-import { User } from './user.entity';
-import { CreateUserDto, UserDto } from './dtos';
-
-/**
- * 加密密码
- * @param password
- * @param salt
- */
-function encryptPassword(password: string, salt: string) {
-  const hash = createHash('md5');
-  hash.update(password + salt);
-  return hash.digest('hex');
-}
-
-/**
- * 生成 salt
- * @param length number
- */
-function genSalt(length: number = 8): string {
-  return Math.random()
-    .toString(16)
-    .slice(2, length + 2);
-}
+const MODEL_NAME = '_User';
 
 /**
  * User Service
@@ -34,98 +15,60 @@ function genSalt(length: number = 8): string {
  */
 @Injectable()
 export class UserService {
-  constructor(
-    @InjectModel(User)
-    private readonly userModel: typeof User,
-  ) {}
+  private readonly logger = new Logger('app:UserService');
 
-  /**
-   * 创建用户
-   * @param  {CreateUserDto} createUserDto
-   * @returns Promise
-   */
-  async create(createUserDto: CreateUserDto): Promise<UserDto> {
-    const originPwd = createUserDto.password;
-    const salt = genSalt();
+  private MainModel: any;
+  private Query: any;
+  constructor() {
+    this.MainModel = AV.User;
+  }
 
-    const password = encryptPassword(originPwd, salt);
+  private createQuery() {
+    const query = new AV.Query(MODEL_NAME);
+    return query;
+  }
 
-    const data = new User({
-      ...createUserDto,
-      salt,
-      password,
+  // 查找
+  async findAll(sessionToken: string): Promise<UserDto[]> {
+    const query = this.createQuery();
+    const list = await query.find({
+      sessionToken,
     });
-    const instance = await data.save();
 
-    return instance;
+    return list as any[] as UserDto[];
+  }
+
+  async findByPk(pk: string): Promise<UserDto> {
+    const query = this.createQuery();
+    const instance = await query.get(pk);
+    return instance as any as UserDto;
   }
 
   /**
-   * 查找所有用户
-   * @returns Promise<UserDto[]>
-   */
-  async findAll(): Promise<UserDto[]> {
-    return this.userModel.findAll();
-  }
-
-  /**
-   * 根据id,查找用户
-   * @param id number
+   * 登录
    * @returns Promise<UserDto>
    */
-  async findByPk(id: number): Promise<UserDto> {
-    return this.userModel.findByPk(id);
-  }
+  async login(username: string, password: string): Promise<LoginedUserDto> {
+    const userIns = await AV.User.logIn(username, password);
 
-  /**
-   * 根据id, 删除用户
-   * @param id number
-   * @returns Promise<UserDto>
-   */
-  async removeByPk(id: number, transaction?: Transaction): Promise<UserDto> {
-    const data = await this.userModel.findByPk(id);
+    // const roles = await userIns.getRoles();
 
-    const options: SaveOptions = {};
-    if (transaction) {
-      options.transaction = transaction;
-    }
+    // 写入 关联
+    // const roleQuery = new AV.Query(AV.Role);
+    // const admin = await roleQuery.get('663511d3ae533a7a6001786e');
+    // admin.getUsers().add(userIns);
+    // await admin.save();
 
-    await data.destroy(options);
+    const roles = await userIns.getRoles();
+    // console.log(roles);
 
-    return data;
-  }
+    const userData: LoginedUserDto = {
+      username: userIns.getUsername(),
+      id: userIns.getObjectId(),
+      token: userIns.getSessionToken(),
+      roles: roles.map((item) => item.getName()),
+    };
 
-  /**
-   * password 更新
-   * @param userID 用户名
-   * @param inputPassword 密码
-   * @param transaction
-   */
-  async updatePasswordByPk(
-    userID: number,
-    inputPassword: string,
-    transaction?: Transaction,
-  ) {
-    const instance = await this.userModel.findByPk(userID);
-
-    if (!instance) {
-      throw new Error('User not found');
-    }
-
-    const salt = genSalt();
-    const password = encryptPassword(inputPassword, salt);
-
-    instance.salt = salt;
-    instance.password = password;
-    instance.updatedAt = new Date();
-
-    const options: SaveOptions = {};
-    if (transaction) {
-      options.transaction = transaction;
-    }
-
-    await instance.save(options);
-
-    return instance;
+    return userData;
   }
 }

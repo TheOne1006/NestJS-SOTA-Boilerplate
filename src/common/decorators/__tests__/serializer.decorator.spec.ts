@@ -15,7 +15,7 @@ describe('defined Serializer Class', () => {
       @SerializerClass(MockSerializerClass)
       static foo() {
         return {
-          id: 100,
+          id: '100',
           type: 'foo',
         };
       }

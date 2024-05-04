@@ -4,7 +4,7 @@
  */
 
 export const ROLE_AUTHENTICATED = 'authenticated';
-export const ROLE_SUPER_ADMIN = 'super-admin';
+export const ROLE_SUPER_ADMIN = 'admin';
 export const ROLE_VIP = 'vip';
 export const ROLE_USER = 'user';
 
@@ -17,7 +17,7 @@ export const ALL_ROLES = [
 
 export enum ENUM_ROLES {
   ROLE_AUTHENTICATED = 'authenticated',
-  ROLE_SUPER_ADMIN = 'super-admin',
+  ROLE_SUPER_ADMIN = 'admin',
   ROLE_VIP = 'vip',
   ROLE_USER = 'user',
 }

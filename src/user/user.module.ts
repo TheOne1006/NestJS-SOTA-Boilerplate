@@ -1,14 +1,13 @@
 /* istanbul ignore file */
 import { Module } from '@nestjs/common';
-import { SequelizeModule } from '@nestjs/sequelize';
+import { UserLogingController } from './user-login.controller';
 import { UserController } from './user.controller';
-import { User } from './user.entity';
 import { UserService } from './user.service';
 import { AuthModule } from '../common/auth';
 
 @Module({
-  imports: [SequelizeModule.forFeature([User]), AuthModule],
-  controllers: [UserController],
+  imports: [AuthModule],
+  controllers: [UserLogingController, UserController],
   providers: [UserService],
 })
-export class UsersModule {}
+export class UserModule {}

@@ -19,10 +19,9 @@ import {
 } from './filters';
 import { LoggerModule } from './logger';
 import { AppI18nModule } from './i18n';
-import { DatabaseModule } from './database';
 
 @Module({
-  imports: [LoggerModule, AppI18nModule, DatabaseModule],
+  imports: [LoggerModule, AppI18nModule],
   providers: [
     { provide: APP_INTERCEPTOR, useClass: LoggingInterceptor },
     // { provide: APP_INTERCEPTOR, useClass: WrapResponceInterceptor },

@@ -9,10 +9,12 @@ import { CoreModule } from './core/core.module';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './user/user.module';
+import { ProjectModule } from './projects/projects.module';
+import { UserModule } from './user/user.module';
+import { TicketStatusModule } from './ticket-status/ticket-status.module';
 
 @Module({
-  imports: [CoreModule, UsersModule],
+  imports: [CoreModule, ProjectModule, UserModule, TicketStatusModule],
   controllers: [AppController],
   providers: [AppService],
 })

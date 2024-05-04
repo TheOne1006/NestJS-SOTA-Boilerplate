@@ -2,13 +2,15 @@
  * 操作、访问用户信息
  */
 export interface RequestUser {
-  id: number;
-
-  email: string;
+  id: string;
 
   username: string;
 
-  roles: string[];
+  token: string;
+
+  email?: string;
+
+  roles?: string[];
 
   ip?: string;
 }

@@ -16,8 +16,8 @@ async function bootstrap() {
   );
 
   const options = new DocumentBuilder()
-    .setTitle('example')
-    .setDescription('example API description')
+    .setTitle('pass-sentry')
+    .setDescription('pass-sentry API description')
     .setVersion('1.0')
     .addApiKey({
       type: 'apiKey',

@@ -1,20 +1,20 @@
-import { Dialect } from 'sequelize/types';
-import { join } from 'path';
+import * as dotenv from 'dotenv';
+
+/**
+ * 启动 .env 配置信息
+ */
+dotenv.config();
 
 /**
  * @ignore
  * 配置项接口
  */
 export interface Iconfig {
-  sequelize: {
-    username?: string;
-    password?: any;
-    database?: string;
-    host: string;
-    storage: string;
-    dialect: Dialect;
-    logging: any;
-    timezone?: string;
+  leancloud: {
+    appId: string;
+    appKey: string;
+    serverURL?: string;
+    masterKey?: string;
   };
   logger: {
     appName: string;
@@ -28,7 +28,7 @@ export interface Iconfig {
     enable: boolean;
     endPoint: string;
   };
-  API_V1: string;
+  port: number | string;
   APP_CONFIG: {
     JWT_SECRET: string;
     JWT_SECRET_EXPIRESIN: string; // token 过期时间
@@ -40,13 +40,11 @@ export interface Iconfig {
  * 默认配置信息
  */
 export const config: Iconfig = {
-  sequelize: {
-    username: 'root',
-    password: null,
-    storage: join(__dirname, '../..', './databases/db/database.dev.sqlite'),
-    host: 'localhost',
-    dialect: 'sqlite' as Dialect,
-    logging: console.log,
+  leancloud: {
+    appId: process.env.LEANCLOUD_APP_ID || '',
+    appKey: process.env.LEANCLOUD_APP_KEY || '',
+    masterKey: process.env.LEANCLOUD_APP_MASTER_KEY || '',
+    serverURL: process.env.LEANCLOUD_APP_SERVERURL || '',
   },
   language: 'zh-cn',
   logger: {
@@ -59,9 +57,9 @@ export const config: Iconfig = {
     enable: true,
     endPoint: 'api',
   },
-  API_V1: 'v1',
+  port: process.env.PORT || 3000,
   APP_CONFIG: {
-    JWT_SECRET: '12132334234242',
-    JWT_SECRET_EXPIRESIN: '10d', // token 过期时间
+    JWT_SECRET: process.env.JWT_SECRET || 'sksjdkjakjuuyqqwqxxzffqqwewewqqwe',
+    JWT_SECRET_EXPIRESIN: process.env.JWT_SECRET_EXPIRESIN || '10d', // token 过期时间
   },
 };

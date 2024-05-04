@@ -1,7 +1,7 @@
 import { join } from 'path';
 
 /**
- * 开发环境配置
+ * 测试环境配置
  */
 export const config = {
   logger: {

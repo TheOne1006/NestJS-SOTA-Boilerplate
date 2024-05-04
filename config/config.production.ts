@@ -1,22 +1,13 @@
-import { Dialect } from 'sequelize/types';
-import { join } from 'path';
 
 /**
  * 开发环境配置
  */
 export const config = {
-  sequelize: {
-    username: 'root',
-    password: null,
-    storage: join(__dirname, '../..', './databases/db/database.sqlite'),
-    host: 'localhost',
-    dialect: 'sqlite' as Dialect,
-    logging: false,
+  leancloud: {
+    appId: process.env.LEANCLOUD_APP_ID || '',
+    appKey: process.env.LEANCLOUD_APP_KEY || '',
+    masterKey: process.env.LEANCLOUD_APP_MASTER_KEY || '',
+    serverURL: process.env.APP_LEANCLOUD_SERVERURL || '',
   },
-  logger: {
-    appName: 'example',
-    level: 'info',
-    timestamp: true,
-    // filename: 'log/all.log',
-  },
+  port: process.env.LEANCLOUD_APP_PORT || process.env.PORT || 3000,
 };
